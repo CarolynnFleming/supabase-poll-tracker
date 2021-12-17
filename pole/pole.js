@@ -32,4 +32,5 @@ pollFormEl.addEventListener('submit', (e) => {
     question = data.get('question');
     choiceOneLabel = data.get('choice-1-label');
     choiceTwoLabel = data.get('choice-2-label');
+    choiceOnePick = data.get('choice-1-pick');
 });
