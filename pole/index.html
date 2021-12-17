@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/home.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <button id="exit">Logout</button>
+        <section class="main-section">
+            <div class="begging">
+                <div class="left">
+                    <h2>Poll</h2>
+                    <div class="current-poll">
+                        <div class="question">Default Question</div>
+                        <div class="choice-1-label">Default Choice 1</div>
+                        <button class="choice-1-button">Pick</button>
+                        <div class="choice-1-pick">0</div>
+                        <div class="choice-2-label">Default Choice 2</div>
+                        <div class="choice-2-pick">0</div>
+                        <button class="choice-2-button">Pick</button>
+                        <button class="end-button">End Poll</button>
+                    </div>
+                 </div>
+                 <div class="form-container">
+                     <form id="poll-form">
+                         <label>
+                             Question
+                             <input name="question" />
+                         </label>
+                         <label>
+                             Choice One
+                             <input name="choice-1-label" />
+                         </label>
+
+                         <label>
+                             Choice Two
+                             <input name="choice-2-label" />
+                         </label>
+                         <button>Add Question and Choices</button>
+                     </form>
+                 </div>
+            </div>
+            <div class="bottom">
+                <h2>Past Polls</h2>
+                <div class="past-polls">
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="./poll.js"></script>
+</body>
+</html>
