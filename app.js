@@ -1,5 +1,5 @@
 // import functions and grab DOM elements
-import { signUp } from './fetcj-utils.js';
+import { signUp } from './fetch-utils.js';
 
 const signUpForm = document.querySelector('#sign-up');
 
