@@ -1,4 +1,4 @@
-import { savePoll, getPolls, logout, checkLoggedIn, checkedLoggedIn } from '../fetch-utils.js';
+import { savePoll, getPolls, logout, checkedLoggedIn } from '../fetch-utils.js';
 import { renderPoll } from '../render-utils.js';
 
 checkedLoggedIn();
@@ -23,3 +23,14 @@ let choiceOneLabel = '';
 let choiceTwoLabel = '';
 let choiceOnePick = 0;
 let choicecTwoPick = 0;
+
+pollFormEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = new FormData(pollFormEl);
+
+    question = data.get('question');
+    choiceOneLabel = data.get('choice-1-label');
+    choiceTwoLabel = data.get('choice-2-label');
+    choiceOnePick = data.get('choice-1-pick');
+});

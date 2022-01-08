@@ -1,4 +1,36 @@
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaWF0IjoxNjM5Njk2NTM5LCJleHAiOjE5NTUyNzI1Mzl9.GNADCbK-_3MbuUNpFXS0PmpgtSSGY5NVGHELxDsuPaQ';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTY5NjUzOSwiZXhwIjoxOTU1MjcyNTM5fQ.YxyYiFuKHQ7yuJsaHERRhZ-v3N0IDr2KUoD5YXhdKzc';
+
+const SUPABASE_URL = 'https://fkbqhgwptgftodgoyhfg.supabase.co';
+
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+export async function savePoll(question, choice1, choice2, pick1, pick2) {
+    const response = await client
+        .from('polls')
+        .insert([
+            {
+                question,
+                choice_1: choice1,
+                choice_2: choice2,
+                pick_1: pick1,
+                pick_2: pick2,
+            },
+        ]);
+    return response.data;
+} 
+
+export async function getpolls() {
+    const response = await client
+        .from('polls')
+        .select();
+    return response.data;
+}
+
+export async function logout() {
+    await client.auth.signOut();
+
+    return window.location.href = '../';
+}
 
 export async function getUser() {
     return client.auth.user();
@@ -9,14 +41,16 @@ export function checkedLoggedIn() {
         window.location = '../';
     }
 }
+export async function signUp(realEmail, realPassword) {
+    console.log('before sign up', client.auth.user());
 
-const SUPABASE_URL = 'https://fkbqhgwptgftodgoyhfg.supabase.co';
+    const response = await client.auth.signUp({
+        email: realEmail,
+        password: realPassword,
+    });
 
-const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    console.log('after sign up', client.auth.user());
 
-export async function logout() {
-    await client.auth.signOut();
-
-    return window.location.href = '../';
+    return response.user;
 }
 
