@@ -1,4 +1,4 @@
-import { savePoll, getPolls, logout, checkLoggedIn, checkedLoggedIn } from '../fetch-utils.js';
+import { savePoll, getPolls, logout, checkedLoggedIn } from '../fetch-utils.js';
 import { renderPoll } from '../render-utils.js';
 
 checkedLoggedIn();
