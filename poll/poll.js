@@ -1,7 +1,7 @@
-import { savePoll, getPolls, logout, checkedLoggedIn } from '../fetch-utils.js';
+import { savePoll, getPolls, logout, checkLoggedIn } from '../fetch-utils.js';
 import { renderPoll } from '../render-utils.js';
 
-checkedLoggedIn();
+checkLoggedIn();
 
 const choiceOneLabelEl = document.querySelector('.choice-1-label');
 const choiceTwoLabelEl = document.querySelector('.choice-2-label');
@@ -64,7 +64,15 @@ endPollButton.addEventListener('click', async() => {
 });
 
 async function displayPolls() {
+    const polls = await getPolls();
 
+    pastPollsEl.textContent = '';
+
+    for (let poll of polls) {
+        const newPollEl = renderPoll(poll);
+
+        pastPollsEl.append(newPollEl);
+    }
 }
 
 window.addEventListener('click', async() => {

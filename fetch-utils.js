@@ -4,9 +4,9 @@ const SUPABASE_URL = 'https://fkbqhgwptgftodgoyhfg.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export async function savePoll(question, choice1, choice2, pick1, pick2) {
+export async function savePoll(question, choice1, pick1, choice2, pick2) {
     const response = await client
-        .from('polls')
+        .from('poll')
         .insert([
             {
                 question,
@@ -19,9 +19,9 @@ export async function savePoll(question, choice1, choice2, pick1, pick2) {
     return response.data;
 } 
 
-export async function getpolls() {
+export async function getPolls() {
     const response = await client
-        .from('polls')
+        .from('poll')
         .select();
     return response.data;
 }
@@ -36,7 +36,7 @@ export async function getUser() {
     return client.auth.user();
 }
 
-export function checkedLoggedIn() {
+export function checkLoggedIn() {
     if (!client.auth.session()) {
         window.location = '../';
     }
