@@ -4,7 +4,7 @@ const SUPABASE_URL = 'https://fkbqhgwptgftodgoyhfg.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export async function savePoll(question, choice1, pick1, choice2, pick2) {
+export async function savePoll(question, choice1, choice2, pick1, pick2) {
     const response = await client
         .from('polls')
         .insert([
