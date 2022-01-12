@@ -12,7 +12,7 @@ signUpForm.addEventListener('submit', async(e) => {
 
     await signUp(email, password);
 
-    window.location.href = './polls';
+    window.location.href = './poll';
 });
 // let state
 
