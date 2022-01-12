@@ -26,7 +26,7 @@ let question = '';
 let choiceOneLabel = '';
 let choiceTwoLabel = '';
 let choiceOnePick = 0;
-let choicecTwoPick = 0;
+let choiceTwoPick = 0;
 
 pollFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -37,11 +37,13 @@ pollFormEl.addEventListener('submit', (e) => {
     choiceOneLabel = data.get('choice-1-label');
     choiceTwoLabel = data.get('choice-2-label');
     choiceOnePick = data.get('choice-1-pick');
+    choiceTwoPick = data.get('choice-2-pick');
+
     questionEl.textContent = question;
     choiceOneLabelEl.textContent = choiceOneLabel;
     choiceOnePickEL.textContent = choiceOnePick;
     choiceTwoLabelEl.textContent = choiceTwoLabel;
-    choiceTwoPickEL.textContent = choicecTwoPick;
+    choiceTwoPickEL.textContent = choiceTwoPick;
 
     pollFormEl.reset();
 });
@@ -53,13 +55,13 @@ choiceOneButton.addEventListener('click', async() => {
 });
 
 choiceTwoButton.addEventListener('click', async() => {
-    choicecTwoPick++;
+    choiceTwoPick++;
 
-    choiceTwoLabelEl.textContent = choicecTwoPick;
+    choiceTwoLabelEl.textContent = choiceTwoPick;
 });
 
 endPollButton.addEventListener('click', async() => {
-    await savePoll(question, choiceOneLabel, choiceTwoLabel, choiceOnePick, choicecTwoPick);
+    await savePoll(question, choiceOneLabel, choiceTwoLabel, choiceOnePick, choiceTwoPick);
     displayPolls();
 });
 
@@ -75,6 +77,6 @@ async function displayPolls() {
     }
 }
 
-window.addEventListener('click', async() => {
+window.addEventListener('load', async() => {
     await displayPolls();
 });

@@ -89,3 +89,31 @@ footer {
     background-color: var(--color3);
     box-shadow: var(--shadow);
 }
+
+form label {
+    display: block;
+}
+
+.top .left{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.past-polls {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.past-polls .poll {
+    display: flex;
+    background-color: lightpink;
+    margin: 10px;
+}
